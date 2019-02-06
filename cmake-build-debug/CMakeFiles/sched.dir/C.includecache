@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jj/CLionProjects/sched/process.c
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+unistd.h
+-
+string.h
+-
+assert.h
+-
+sys/stat.h
+-
+
