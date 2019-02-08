@@ -1,31 +1,37 @@
 CC=clang
 CXX=clang++
 CFLAGS=-ggdb -Wall
+.DEFAULT_GOAL := all
 
-process:
-	@$(CC) $(CFLAGS) process.c -o process
-vm:
-	@$(CC) $(CFLAGS) vm.c -o vm
+procgen:
+	@$(CC) $(CFLAGS) procgen.c -o procgen
+
+sched: proc
+	@$(CC) $(CFLAGS) -c sched.c
+	@$(CC) $(CFLAGS) proc.o sched.o -o sched
+
 proc:
 	@$(CC) $(CFLAGS) -c proc.c
+
 proctest:
-	@$(CC) $(CFLAGS) -c proctest.c
-	@$(CC) $(CFLAGS) proc.o proctest.o -o proctest
+	@$(CC) $(CFLAGS) -D TEST proc.c -o proctest
+	@./proctest
 
-all: process vm
+all: procgen sched
 
-test: proc proctest
+test: proctest
 	@./proctest
 	@rm -f proctest
 
-runproc: process
-	@./process
+runproc: procgen
+	@./procgen
 
-runvm: vm
-	@./vm 0.proc
+runsched: sched
+	@./sched 0.proc
 
 clean:
-	@rm -f process
-	@rm -f vm
+	@rm -f sched
+	@rm -f procgen
+	@rm -f proctest
 	#@rm -f *.proc
 	@rm -f *.o

@@ -57,31 +57,31 @@ include CMakeFiles/sched.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/sched.dir/flags.make
 
-CMakeFiles/sched.dir/process.c.o: CMakeFiles/sched.dir/flags.make
-CMakeFiles/sched.dir/process.c.o: ../process.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sched.dir/process.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sched.dir/process.c.o   -c /home/jj/CLionProjects/sched/process.c
+CMakeFiles/sched.dir/procgen.c.o: CMakeFiles/sched.dir/flags.make
+CMakeFiles/sched.dir/procgen.c.o: ../procgen.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sched.dir/procgen.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sched.dir/procgen.c.o   -c /home/jj/CLionProjects/sched/procgen.c
 
-CMakeFiles/sched.dir/process.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sched.dir/process.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jj/CLionProjects/sched/process.c > CMakeFiles/sched.dir/process.c.i
+CMakeFiles/sched.dir/procgen.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sched.dir/procgen.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jj/CLionProjects/sched/procgen.c > CMakeFiles/sched.dir/procgen.c.i
 
-CMakeFiles/sched.dir/process.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sched.dir/process.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jj/CLionProjects/sched/process.c -o CMakeFiles/sched.dir/process.c.s
+CMakeFiles/sched.dir/procgen.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sched.dir/procgen.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jj/CLionProjects/sched/procgen.c -o CMakeFiles/sched.dir/procgen.c.s
 
-CMakeFiles/sched.dir/vm.c.o: CMakeFiles/sched.dir/flags.make
-CMakeFiles/sched.dir/vm.c.o: ../vm.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/sched.dir/vm.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sched.dir/vm.c.o   -c /home/jj/CLionProjects/sched/vm.c
+CMakeFiles/sched.dir/sched.c.o: CMakeFiles/sched.dir/flags.make
+CMakeFiles/sched.dir/sched.c.o: ../sched.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/sched.dir/sched.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sched.dir/sched.c.o   -c /home/jj/CLionProjects/sched/sched.c
 
-CMakeFiles/sched.dir/vm.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sched.dir/vm.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jj/CLionProjects/sched/vm.c > CMakeFiles/sched.dir/vm.c.i
+CMakeFiles/sched.dir/sched.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sched.dir/sched.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jj/CLionProjects/sched/sched.c > CMakeFiles/sched.dir/sched.c.i
 
-CMakeFiles/sched.dir/vm.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sched.dir/vm.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jj/CLionProjects/sched/vm.c -o CMakeFiles/sched.dir/vm.c.s
+CMakeFiles/sched.dir/sched.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sched.dir/sched.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jj/CLionProjects/sched/sched.c -o CMakeFiles/sched.dir/sched.c.s
 
 CMakeFiles/sched.dir/proc.c.o: CMakeFiles/sched.dir/flags.make
 CMakeFiles/sched.dir/proc.c.o: ../proc.c
@@ -111,16 +111,16 @@ CMakeFiles/sched.dir/proctest.c.s: cmake_force
 
 # Object files for target sched
 sched_OBJECTS = \
-"CMakeFiles/sched.dir/process.c.o" \
-"CMakeFiles/sched.dir/vm.c.o" \
+"CMakeFiles/sched.dir/procgen.c.o" \
+"CMakeFiles/sched.dir/sched.c.o" \
 "CMakeFiles/sched.dir/proc.c.o" \
 "CMakeFiles/sched.dir/proctest.c.o"
 
 # External object files for target sched
 sched_EXTERNAL_OBJECTS =
 
-sched: CMakeFiles/sched.dir/process.c.o
-sched: CMakeFiles/sched.dir/vm.c.o
+sched: CMakeFiles/sched.dir/procgen.c.o
+sched: CMakeFiles/sched.dir/sched.c.o
 sched: CMakeFiles/sched.dir/proc.c.o
 sched: CMakeFiles/sched.dir/proctest.c.o
 sched: CMakeFiles/sched.dir/build.make

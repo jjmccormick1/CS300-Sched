@@ -150,32 +150,32 @@ proc.c.s:
 	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/proc.c.s
 .PHONY : proc.c.s
 
-process.o: process.c.o
+procgen.o: procgen.c.o
 
-.PHONY : process.o
+.PHONY : procgen.o
 
 # target to build an object file
-process.c.o:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/process.c.o
-.PHONY : process.c.o
+procgen.c.o:
+	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/procgen.c.o
+.PHONY : procgen.c.o
 
-process.i: process.c.i
+procgen.i: procgen.c.i
 
-.PHONY : process.i
+.PHONY : procgen.i
 
 # target to preprocess a source file
-process.c.i:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/process.c.i
-.PHONY : process.c.i
+procgen.c.i:
+	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/procgen.c.i
+.PHONY : procgen.c.i
 
-process.s: process.c.s
+procgen.s: procgen.c.s
 
-.PHONY : process.s
+.PHONY : procgen.s
 
 # target to generate assembly for a file
-process.c.s:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/process.c.s
-.PHONY : process.c.s
+procgen.c.s:
+	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/procgen.c.s
+.PHONY : procgen.c.s
 
 proctest.o: proctest.c.o
 
@@ -204,32 +204,32 @@ proctest.c.s:
 	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/proctest.c.s
 .PHONY : proctest.c.s
 
-vm.o: vm.c.o
+sched.o: sched.c.o
 
-.PHONY : vm.o
+.PHONY : sched.o
 
 # target to build an object file
-vm.c.o:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/vm.c.o
-.PHONY : vm.c.o
+sched.c.o:
+	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/sched.c.o
+.PHONY : sched.c.o
 
-vm.i: vm.c.i
+sched.i: sched.c.i
 
-.PHONY : vm.i
+.PHONY : sched.i
 
 # target to preprocess a source file
-vm.c.i:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/vm.c.i
-.PHONY : vm.c.i
+sched.c.i:
+	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/sched.c.i
+.PHONY : sched.c.i
 
-vm.s: vm.c.s
+sched.s: sched.c.s
 
-.PHONY : vm.s
+.PHONY : sched.s
 
 # target to generate assembly for a file
-vm.c.s:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/vm.c.s
-.PHONY : vm.c.s
+sched.c.s:
+	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/sched.c.s
+.PHONY : sched.c.s
 
 # Help Target
 help:
@@ -243,15 +243,15 @@ help:
 	@echo "... proc.o"
 	@echo "... proc.i"
 	@echo "... proc.s"
-	@echo "... process.o"
-	@echo "... process.i"
-	@echo "... process.s"
+	@echo "... procgen.o"
+	@echo "... procgen.i"
+	@echo "... procgen.s"
 	@echo "... proctest.o"
 	@echo "... proctest.i"
 	@echo "... proctest.s"
-	@echo "... vm.o"
-	@echo "... vm.i"
-	@echo "... vm.s"
+	@echo "... sched.o"
+	@echo "... sched.i"
+	@echo "... sched.s"
 .PHONY : help
 
 

@@ -84,13 +84,13 @@
 		<Unit filename="/home/jj/CLionProjects/sched/proc.h">
 			<Option target="sched"/>
 		</Unit>
-		<Unit filename="/home/jj/CLionProjects/sched/process.c">
+		<Unit filename="/home/jj/CLionProjects/sched/procgen.c">
 			<Option target="sched"/>
 		</Unit>
 		<Unit filename="/home/jj/CLionProjects/sched/proctest.c">
 			<Option target="sched"/>
 		</Unit>
-		<Unit filename="/home/jj/CLionProjects/sched/vm.c">
+		<Unit filename="/home/jj/CLionProjects/sched/sched.c">
 			<Option target="sched"/>
 		</Unit>
 		<Unit filename="/home/jj/CLionProjects/sched/CMakeLists.txt">

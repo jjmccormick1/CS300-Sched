@@ -5,9 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/jj/CLionProjects/sched/proc.c" "/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles/sched.dir/proc.c.o"
-  "/home/jj/CLionProjects/sched/process.c" "/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles/sched.dir/process.c.o"
+  "/home/jj/CLionProjects/sched/procgen.c" "/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles/sched.dir/procgen.c.o"
   "/home/jj/CLionProjects/sched/proctest.c" "/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles/sched.dir/proctest.c.o"
-  "/home/jj/CLionProjects/sched/vm.c" "/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles/sched.dir/vm.c.o"
+  "/home/jj/CLionProjects/sched/sched.c" "/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles/sched.dir/sched.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

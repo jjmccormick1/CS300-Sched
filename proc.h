@@ -7,7 +7,15 @@
 
 #include <stdio.h>
 
-typedef struct proc proc;
+typedef struct proc {
+    int num;
+    int whereAt;
+    int priority;
+    int execTime;
+    int memory;
+    int openCount;
+    FILE * fp;
+}proc;
 
 proc * openProc(int num);
 int closeProc(proc * proc1);
