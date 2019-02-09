@@ -7,9 +7,27 @@
 #include <time.h>
 #include "proc.h"
 
+//Functions
+void clearScreen();
+int doesIOBlock();
+int run(int num);
+
+//Globals
 int location, priority, exectime, memory;
 FILE * fp;
 int clk;
+
+
+int main(int argc, char **argv) {
+    //srand(time(NULL));
+    if(argc != 2) {
+        printf("Wrong args!");
+        exit(1);
+    }
+    fp = fopen(argv[1], "r");
+    clearScreen();
+    run(0);
+}
 
 void clearScreen()
 {
@@ -49,16 +67,11 @@ int run(int num) {
     closeProc(proc1);
     return 0;
 }
-int main(int argc, char **argv) {
-    //srand(time(NULL));
-    if(argc != 2) {
-        printf("Wrong args!");
-        exit(1);
-    }
-    fp = fopen(argv[1], "r");
-    clearScreen();
-    run(0);
+
+int sched() {
+    
 }
+
 
 
 
