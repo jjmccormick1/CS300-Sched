@@ -12,14 +12,16 @@
 void clearScreen();
 int doesIOBlock();
 int run(int num);
-void enqueue(int arrnum);
-int dequeue(int arrnum);
+void loadNew();
+void enqueue(proc * proc1);
+proc * dequeue(int priority);
 
 //Globals
 int location, priority, exectime, memory;
 FILE * fp;
 int clk;
 proc * queue[4][10001];
+int arrptr[4][2];// One for each priority, head and tail ptr
 int counter = 0;;
 
 int main(int argc, char **argv) {
@@ -28,8 +30,11 @@ int main(int argc, char **argv) {
         printf("Wrong args!");
         exit(1);
     }
-    fp = fopen(argv[1], "r");
-    clearScreen();
+    for(int i=0; i < 4; i++){
+        for(int j =0; j<2; j++){
+            arrptr[i][j]=0;
+        }
+    }
     run(0);
 }
 
@@ -73,6 +78,10 @@ int run(int num) {
 }
 
 int sched() {
+    return 1;
+}
+
+void loadNew() {
     //Check for new files
     char buf[100];
     //Open with counter filename
@@ -84,9 +93,17 @@ int sched() {
         counter++;
         //Open with counter filename
         snprintf(buf, sizeof(buf), "%i.proc", counter);
+        enqueue(newproc);
     }
 }
 
+void enqueue(proc * proc1) {
+    queue[proc1->priority][arrptr[proc1->priority][1]] = proc1;
+    arrptr[proc1->priority][1]++;
+}
 
-
-
+proc * dequeue(int priority) {
+    proc * tmp = queue[priority][arrptr[priority][0]];
+    arrptr[priority][0]++;
+    return tmp;
+}
