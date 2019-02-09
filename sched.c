@@ -5,18 +5,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 #include "proc.h"
 
 //Functions
 void clearScreen();
 int doesIOBlock();
 int run(int num);
+void enqueue(int arrnum);
+int dequeue(int arrnum);
 
 //Globals
 int location, priority, exectime, memory;
 FILE * fp;
 int clk;
-
+proc * queue[4][10001];
+int counter = 0;;
 
 int main(int argc, char **argv) {
     //srand(time(NULL));
@@ -69,7 +73,18 @@ int run(int num) {
 }
 
 int sched() {
+    //Check for new files
+    char buf[100];
+    //Open with counter filename
+    snprintf(buf, sizeof(buf), "%i.proc", counter);
     
+    while(access(buf, F_OK) != -1) {
+        proc * newproc = openProc(counter);
+        enqueue(newproc);
+        counter++;
+        //Open with counter filename
+        snprintf(buf, sizeof(buf), "%i.proc", counter);
+    }
 }
 
 
