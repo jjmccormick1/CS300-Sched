@@ -21,21 +21,17 @@ int sched();
 FILE * fp;
 int clk;
 proc * queue[4][10001];
-node ** head;//Head and tail for each queue LL
-node ** tail;
+int head[4];//Head and tail for each queue
+int tail[4];
 int size[4];// One for each priority
 int counter = 0;;
 
-typedef struct node {
-    node * next;
-    node * prev;
-    proc * prc;
-}node;
 
 int main(int argc, char **argv) {
     for(int i = 0; i < 4; i++) {
-        head[i] = NULL;
-        tail[i] = NULL;
+        head[i] = 10000;
+        tail[i] = 10000;
+        size[i] = 0;
     }
     sched();
 }
@@ -67,14 +63,13 @@ int run(proc * prc) {
     printRun(prc);
     while(c != 0){
         if(doesIOBlock()) {
-            closeProc(prc);
             return -1;
         }
         printf("\nCurrent Exec: %d\n",c);
         clk += c;
         c = getNext(prc);
     }
-    closeProc(prc);
+    //closeProc(prc);
     return 0;
 }
 
@@ -86,6 +81,8 @@ int sched() {
             int ret = run(next);
             if(ret == -1)
                 enqueue(next);
+            else
+                closeProc(next);
         }
     }
     return 0;
@@ -107,18 +104,10 @@ void loadNew() {
 }
 
 void enqueue(proc * proc1) {
-    node * newnode = malloc(sizeof(node));
-    size[proc1->priority]++;
-    if(head[proc1->priority] == NULL) {
-        head[proc1->priority] = newnode;
-        tail[proc1->priority] = newnode;
-        newnode->next = NULL;
-    }
-    else {
-        newnode->next = head[proc1->priority];
-        head[proc1->priority]->prev = newnode;
-        head[proc1->priority] = newnode;
-    }
+    int prior = proc1->priority;
+    queue[prior][head[prior]] = proc1;
+    head[prior]--;
+    size[prior]++;
 
 }
 
@@ -126,18 +115,8 @@ proc * dequeue(int priority) {
     if(size[priority] == 0) {
         return NULL;
     }
-    else if(size[priority] == 1){
-        node * ret = head[priority];
-        head[priority] = NULL;
-        tail[priority] = NULL;
-        size[priority]--;
-        return ret->prc;
-    }
-    else {
-        node * ret = tail[priority];
-        tail[priority] = ret->prev;
-        tail[priority]->next = NULL;
-        size[priority]--;
-        return ret->prc;
-    }
+    proc * ret = queue[priority][tail[priority]];
+    tail[priority]--;
+    size[priority]--;
+    return ret;
 }

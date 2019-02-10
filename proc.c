@@ -26,7 +26,9 @@ int closeProc(proc * proc1) {
     //Open with counter filename
     snprintf(buf, sizeof(buf), "%i.proc", proc1->num);
     proc1->fp = fopen(buf,"r+");
-    fprintf(proc1->fp, "%d", proc1->whereAt);
+    rewind(proc1->fp);
+    fprintf(proc1->fp, "%i", proc1->whereAt);
+    fclose(proc1->fp);
     return 1;
 }
 int getPriority(proc * proc1) {
@@ -47,7 +49,7 @@ int getMemory(proc * proc1) {
 int getNext(proc * proc1) {
     //Current at fp will be after info lines already after reading them
     int next;
-    fscanf(proc1->fp, "%d", &next);
+    fscanf(proc1->fp, "%i\n", &next);
     if(next == EOF)
         return 0;
     proc1->openCount++;

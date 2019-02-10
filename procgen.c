@@ -33,7 +33,7 @@ int main() {
     while(2 > i) {
         long ran = (rand() % 9981) + 20;
         new_process();
-        usleep(ran * 1000); // Wait for 20 to 10000 seconds
+        //usleep(ran * 1000); // Wait for 20 to 10000 seconds
         i++;
     }
 
