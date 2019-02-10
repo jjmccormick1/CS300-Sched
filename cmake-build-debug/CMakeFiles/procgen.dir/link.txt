@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/procgen.dir/procgen.c.o  -o procgen 

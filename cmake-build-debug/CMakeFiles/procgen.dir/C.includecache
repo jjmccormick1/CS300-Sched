@@ -6,13 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/jj/CLionProjects/sched/proc.c
+/home/jj/CLionProjects/sched/procgen.c
+stdio.h
+-
 stdlib.h
 -
-proc.h
-/home/jj/CLionProjects/sched/proc.h
-
-/home/jj/CLionProjects/sched/proc.h
-stdio.h
+time.h
+-
+unistd.h
+-
+string.h
+-
+assert.h
+-
+sys/stat.h
 -
 

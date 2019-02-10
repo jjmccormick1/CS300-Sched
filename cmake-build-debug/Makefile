@@ -123,6 +123,19 @@ sched/fast:
 	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/build
 .PHONY : sched/fast
 
+#=============================================================================
+# Target rules for targets named procgen
+
+# Build rule for target.
+procgen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 procgen
+.PHONY : procgen
+
+# fast build rule for target.
+procgen/fast:
+	$(MAKE) -f CMakeFiles/procgen.dir/build.make CMakeFiles/procgen.dir/build
+.PHONY : procgen/fast
+
 proc.o: proc.c.o
 
 .PHONY : proc.o
@@ -156,7 +169,7 @@ procgen.o: procgen.c.o
 
 # target to build an object file
 procgen.c.o:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/procgen.c.o
+	$(MAKE) -f CMakeFiles/procgen.dir/build.make CMakeFiles/procgen.dir/procgen.c.o
 .PHONY : procgen.c.o
 
 procgen.i: procgen.c.i
@@ -165,7 +178,7 @@ procgen.i: procgen.c.i
 
 # target to preprocess a source file
 procgen.c.i:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/procgen.c.i
+	$(MAKE) -f CMakeFiles/procgen.dir/build.make CMakeFiles/procgen.dir/procgen.c.i
 .PHONY : procgen.c.i
 
 procgen.s: procgen.c.s
@@ -174,35 +187,8 @@ procgen.s: procgen.c.s
 
 # target to generate assembly for a file
 procgen.c.s:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/procgen.c.s
+	$(MAKE) -f CMakeFiles/procgen.dir/build.make CMakeFiles/procgen.dir/procgen.c.s
 .PHONY : procgen.c.s
-
-proctest.o: proctest.c.o
-
-.PHONY : proctest.o
-
-# target to build an object file
-proctest.c.o:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/proctest.c.o
-.PHONY : proctest.c.o
-
-proctest.i: proctest.c.i
-
-.PHONY : proctest.i
-
-# target to preprocess a source file
-proctest.c.i:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/proctest.c.i
-.PHONY : proctest.c.i
-
-proctest.s: proctest.c.s
-
-.PHONY : proctest.s
-
-# target to generate assembly for a file
-proctest.c.s:
-	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/proctest.c.s
-.PHONY : proctest.c.s
 
 sched.o: sched.c.o
 
@@ -240,15 +226,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... sched"
 	@echo "... edit_cache"
+	@echo "... procgen"
 	@echo "... proc.o"
 	@echo "... proc.i"
 	@echo "... proc.s"
 	@echo "... procgen.o"
 	@echo "... procgen.i"
 	@echo "... procgen.s"
-	@echo "... proctest.o"
-	@echo "... proctest.i"
-	@echo "... proctest.s"
 	@echo "... sched.o"
 	@echo "... sched.i"
 	@echo "... sched.s"

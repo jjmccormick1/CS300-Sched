@@ -3,4 +3,10 @@ project(sched C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(sched procgen.c sched.c proc.c proc.h proctest.c)
+add_executable(sched sched.h sched.c proc.c proc.h)
+
+project(procgen C)
+
+set(CMAKE_C_STANDARD 11)
+
+add_executable(procgen procgen.c)

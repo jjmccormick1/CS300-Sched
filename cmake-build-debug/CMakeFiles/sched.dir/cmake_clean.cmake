@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/sched.dir/procgen.c.o"
   "CMakeFiles/sched.dir/sched.c.o"
   "CMakeFiles/sched.dir/proc.c.o"
-  "CMakeFiles/sched.dir/proctest.c.o"
   "sched.pdb"
   "sched"
 )
