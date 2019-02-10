@@ -27,7 +27,7 @@ runproc: procgen
 	@./procgen
 
 runsched: sched
-	@./sched 0.proc
+	@./sched
 
 clean:
 	@rm -f sched
