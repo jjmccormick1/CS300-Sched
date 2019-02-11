@@ -1,6 +1,6 @@
 CC=clang
 CXX=clang++
-CFLAGS=-ggdb -Wall
+CFLAGS=-ggdb -Wall -Ofast
 .DEFAULT_GOAL := all
 .PHONY: gen all test
 

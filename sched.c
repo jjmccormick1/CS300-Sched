@@ -64,7 +64,7 @@ int doesIOBlock() {
 }
 
 int run(proc * prc) {
-    printRun(prc);
+    //printRun(prc);
     int c = getNext(prc);
     while(c != 0){
         if(doesIOBlock() == 1) {
@@ -72,25 +72,23 @@ int run(proc * prc) {
         }
         clk += c;
         c = getNext(prc);
-        printf("Next Exec : %i\n", c);
+        //printf("Next Exec : %i\n", c);
     }
-    closeProc(prc);
+    //closeProc(prc);
     return 0;
 }
 
 int sched() {
     loadNew();
      for(int i = 0; i < 4; i++) {
-          proc * prev; 
            //Gets current size, to avoid enqueue continually running same thing.
           for(int currentsize = size[i];  currentsize > 0 ; currentsize--) {
                 proc * next = dequeue(i);
-                prev = next;
                 int ret = run(next);
                 if(ret == -1)
                     enqueue(next);
-                //else
-                  // closeProc(next);
+                else
+                  closeProc(next);
             }  
         }   
     return 0;
