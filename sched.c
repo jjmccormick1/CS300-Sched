@@ -34,6 +34,9 @@ int main(int argc, char **argv) {
         size[i] = 0;
     }
     sched();
+    while(size[0] > 0 || size[1] > 0 || size[2] > 0 || size[3] > 0) {
+        sched();
+    }
 }
 
 void clearScreen()
@@ -62,12 +65,12 @@ int run(proc * prc) {
     int c = getNext(prc);
     printRun(prc);
     while(c != 0){
-        if(doesIOBlock()) {
+        if(doesIOBlock() == 1) {
             return -1;
         }
-        printf("\nCurrent Exec: %d\n",c);
         clk += c;
         c = getNext(prc);
+        printf("Next Exec : %i\n", c);
     }
     //closeProc(prc);
     return 0;
@@ -75,16 +78,16 @@ int run(proc * prc) {
 
 int sched() {
     loadNew();
-    for(int i = 0; i < 4; i++) {
-        while(size[i] > 0) {
-            proc * next = dequeue(i);
-            int ret = run(next);
-            if(ret == -1)
-                enqueue(next);
-            else
-                closeProc(next);
-        }
-    }
+     for(int i = 0; i < 4; i++) {
+          while(size[i] > 0) {
+                proc * next = dequeue(i);
+                int ret = run(next);
+                if(ret == -1)
+                    enqueue(next);
+                else
+                  closeProc(next);
+            }  
+        }   
     return 0;
 }
 

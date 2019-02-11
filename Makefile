@@ -2,9 +2,11 @@ CC=clang
 CXX=clang++
 CFLAGS=-ggdb -Wall
 .DEFAULT_GOAL := all
+.PHONY: gen all test
 
 procgen:
 	@$(CC) $(CFLAGS) procgen.c -o procgen
+
 
 sched: proc
 	@$(CC) $(CFLAGS) -c sched.c
@@ -19,14 +21,10 @@ proctest:
 
 all: procgen sched
 
-test: proctest
-	@./proctest
-	@rm -f proctest
-
-runproc: procgen
+gen: procgen
 	@./procgen
 
-runsched: sched
+runsched: sched gen
 	@./sched
 
 clean:
