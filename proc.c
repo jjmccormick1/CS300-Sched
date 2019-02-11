@@ -1,6 +1,9 @@
-//
-// Created by jj on 2/6/19.
-//
+// proc.c
+// Created by Jeremy McCormick on 2/6/19.
+// CS300 Operating Systems Dr. Mayhew
+// Scheduler Program
+// This module is responsible for opening and closing process files. 
+// Uses proc structure to hold all information.
 
 #include <stdlib.h>
 #include "proc.h"
@@ -20,7 +23,6 @@ proc * openProc(int num) {
 }
 
 int closeProc(proc * proc1) {
-    proc1->whereAt = proc1->whereAt + proc1->openCount;
     fclose(proc1->fp);
     char buf[100];
     //Open with counter filename
@@ -29,6 +31,7 @@ int closeProc(proc * proc1) {
     rewind(proc1->fp);
     fprintf(proc1->fp, "%i", proc1->whereAt);
     fclose(proc1->fp);
+    free(proc1);
     return 1;
 }
 int getPriority(proc * proc1) {
@@ -52,7 +55,7 @@ int getNext(proc * proc1) {
     fscanf(proc1->fp, "%d\n", &next);
     if(next == EOF)
         return -1;
-    proc1->openCount++;
+    proc1->whereAt++;
     return next;
 }
 
