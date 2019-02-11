@@ -47,11 +47,11 @@ void clearScreen()
     fprintf(stdout, CLEAR_SCREEN_ANSI, 12);
 }
 void printRun(proc * proc1) {
-    printf("Now Running file num : %d\n", proc1->num);
-    printf("Location: %i\n",proc1->whereAt);
-    printf("Priority: %i\n",proc1->priority);
-    printf("ExecTime: %i\n",proc1->execTime);
-    printf("Memory: %i\n", proc1->memory);
+    printf("Now Running file num : %d\n", getNumber(proc1));
+    printf("Location: %i\n",getWhereAt(proc1));
+    printf("Priority: %i\n",getPriority(proc1));
+    printf("ExecTime: %i\n",getTime(proc1));
+    printf("Memory: %i\n", getMemory(proc1));
 
 }
 
@@ -81,8 +81,11 @@ int run(proc * prc) {
 int sched() {
     loadNew();
      for(int i = 0; i < 4; i++) {
-          while(size[i] > 0) {
+          proc * prev; 
+           //Gets current size, to avoid enqueue continually running same thing.
+          for(int currentsize = size[i];  currentsize > 0 ; currentsize--) {
                 proc * next = dequeue(i);
+                prev = next;
                 int ret = run(next);
                 if(ret == -1)
                     enqueue(next);

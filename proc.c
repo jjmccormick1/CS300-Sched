@@ -34,6 +34,9 @@ int closeProc(proc * proc1) {
     free(proc1);
     return 1;
 }
+int getNumber(proc * proc1) {
+    return proc1->num;
+}
 int getPriority(proc * proc1) {
     return proc1->priority;
 }

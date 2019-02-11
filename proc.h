@@ -17,7 +17,9 @@ typedef struct proc {
     FILE * fp;
 }proc;
 
+
 proc * openProc(int num);
+int getNumber(proc * proc);
 int closeProc(proc * proc1);
 int getPriority(proc * proc1);
 int getWhereAt(proc * proc1);
