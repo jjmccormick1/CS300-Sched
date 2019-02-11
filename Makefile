@@ -31,5 +31,5 @@ clean:
 	@rm -f sched
 	@rm -f procgen
 	@rm -f proctest
-	#@rm -f *.proc
+	@rm -f *.proc
 	@rm -f *.o
