@@ -124,7 +124,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=procgen
+CMAKE_PROJECT_NAME:STATIC=proctest
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -196,6 +196,12 @@ procgen_BINARY_DIR:STATIC=/home/jj/CLionProjects/sched/cmake-build-debug
 
 //Value Computed by CMake
 procgen_SOURCE_DIR:STATIC=/home/jj/CLionProjects/sched
+
+//Value Computed by CMake
+proctest_BINARY_DIR:STATIC=/home/jj/CLionProjects/sched/cmake-build-debug
+
+//Value Computed by CMake
+proctest_SOURCE_DIR:STATIC=/home/jj/CLionProjects/sched
 
 //Value Computed by CMake
 sched_BINARY_DIR:STATIC=/home/jj/CLionProjects/sched/cmake-build-debug

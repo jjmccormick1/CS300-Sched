@@ -1,0 +1,1 @@
+/usr/bin/cc -D TEST -g   CMakeFiles/proctest.dir/proc.c.o  -o proctest 

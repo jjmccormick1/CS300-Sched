@@ -42,6 +42,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/proctest.dir/DependInfo.cmake"
   "CMakeFiles/sched.dir/DependInfo.cmake"
   "CMakeFiles/procgen.dir/DependInfo.cmake"
   )

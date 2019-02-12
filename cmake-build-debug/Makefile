@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named proctest
+
+# Build rule for target.
+proctest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 proctest
+.PHONY : proctest
+
+# fast build rule for target.
+proctest/fast:
+	$(MAKE) -f CMakeFiles/proctest.dir/build.make CMakeFiles/proctest.dir/build
+.PHONY : proctest/fast
+
+#=============================================================================
 # Target rules for targets named sched
 
 # Build rule for target.
@@ -142,6 +155,7 @@ proc.o: proc.c.o
 
 # target to build an object file
 proc.c.o:
+	$(MAKE) -f CMakeFiles/proctest.dir/build.make CMakeFiles/proctest.dir/proc.c.o
 	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/proc.c.o
 .PHONY : proc.c.o
 
@@ -151,6 +165,7 @@ proc.i: proc.c.i
 
 # target to preprocess a source file
 proc.c.i:
+	$(MAKE) -f CMakeFiles/proctest.dir/build.make CMakeFiles/proctest.dir/proc.c.i
 	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/proc.c.i
 .PHONY : proc.c.i
 
@@ -160,6 +175,7 @@ proc.s: proc.c.s
 
 # target to generate assembly for a file
 proc.c.s:
+	$(MAKE) -f CMakeFiles/proctest.dir/build.make CMakeFiles/proctest.dir/proc.c.s
 	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/proc.c.s
 .PHONY : proc.c.s
 
@@ -224,6 +240,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... proctest"
 	@echo "... sched"
 	@echo "... edit_cache"
 	@echo "... procgen"

@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/procgen.dir/procgen.c.o  -o procgen 
+/usr/bin/cc -D TEST -g   CMakeFiles/procgen.dir/procgen.c.o  -o procgen 

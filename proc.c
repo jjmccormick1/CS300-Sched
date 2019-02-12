@@ -8,71 +8,76 @@
 #include <stdlib.h>
 #include "proc.h"
 
-proc * openProc(int num) {
-    proc * proc1 = malloc(sizeof(proc));
-    proc1->openCount = 0;
+FILE * fp;
+int openCount = 0;
+int number;
+void openProc(int num) {
     char buf[100];
+    openCount = 0;
     //Open with counter filename
     snprintf(buf, sizeof(buf), "%i.proc", num);
-    proc1->fp = fopen(buf,"r");
-    proc1->num = num;
-    fscanf(proc1->fp,"%d\n%d\n%d\n%d\n",&proc1->whereAt, &proc1->priority, &proc1->execTime, &proc1->memory);
-    if(proc1->whereAt > 0)
-        fseek(proc1->fp, proc1->whereAt * 3, SEEK_CUR); // Goto where at, may be zero
-    return proc1;
+    fp = fopen(buf, "r+");
+    number = num;
 }
 
-int closeProc(proc * proc1) {
-    fclose(proc1->fp);
-    char buf[100];
-    //Open with counter filename
-    snprintf(buf, sizeof(buf), "%i.proc", proc1->num);
-    proc1->fp = fopen(buf,"r+");
-    rewind(proc1->fp);
-    fprintf(proc1->fp, "%i", proc1->whereAt);
-    fclose(proc1->fp);
-    free(proc1);
-    return 1;
+void closeProc() {
+    rewind(fp);
+    fprintf(fp, "%09i", (getNumber() + openCount));
+    fclose(fp);
 }
-int getNumber(proc * proc1) {
-    return proc1->num;
+int getNumber() {
+    return number;
 }
-int getPriority(proc * proc1) {
-    return proc1->priority;
+int getPriority() {
+    fseek(fp, 10, SEEK_SET);
+    int ret;
+    fscanf(fp, "%d\n", &ret);
+    return ret;
 }
-int getWhereAt(proc * proc1) {
-    return proc1->whereAt;
+int getWhereAt() {
+    rewind(fp);
+    int ret;
+    fscanf(fp, "%d\n", &ret);
+    return ret;
 }
-int getTime(proc * proc1) {
-    return proc1->execTime;
+int getTime() {
+    fseek(fp, 10 * 2, SEEK_SET);
+    int ret;
+    fscanf(fp, "%d\n", &ret);
+    return ret;
 }
-void setTime(proc * proc1, int time) {
-    proc1->execTime = time;
+void setTime(int time) {
+    fseek(fp, 10 * 2, SEEK_SET);
+    fprintf(fp, "%9i", time);
 }
-int getMemory(proc * proc1) {
-    return proc1->memory;
+int getMemory() {
+    fseek(fp, 10 * 3, SEEK_SET);
+    int ret;
+    fscanf(fp, "%d\n", &ret);
+    return ret;
 }
-int getNext(proc * proc1) {
-    //Current at fp will be after info lines already after reading them
+int getNext() {
+    int pos = getWhereAt() + openCount;
+    fseek(fp, (10 * 4) + pos * 3, SEEK_SET); //Goto end of proc info
     int next;
-    fscanf(proc1->fp, "%d\n", &next);
+    fscanf(fp, "%d", &next);
     if(next == EOF)
         return -1;
-    proc1->whereAt++;
+    openCount++;
     return next;
 }
 
 #ifdef TEST
-int main(void) {
-
-    proc * proc1 = openProc(0);
-    printf("At Line: %i\n",getWhereAt(proc1));
-    printf("Memory: %i\n",getMemory(proc1));
-    printf("Exec Time: %i\n",getTime(proc1));
-    printf("Priority: %i\n",getPriority(proc1));
-    printf("next: %i\n",getNext(proc1));
-    printf("next: %i\n",getNext(proc1));
-    printf("next: %i\n",getNext(proc1));
-    printf("next: %i\n",getNext(proc1));
-}
+/*int main(void) {
+    openProc(0);
+    printf("At Line: %i\n",getWhereAt());
+    printf("Memory: %i\n",getMemory());
+    printf("Exec Time: %i\n",getTime());
+    printf("Priority: %i\n",getPriority());
+    printf("next: %i\n",getNext());
+    printf("next: %i\n",getNext());
+    printf("next: %i\n",getNext());
+    printf("next: %i\n",getNext());
+    closeProc();
+}*/
 #endif

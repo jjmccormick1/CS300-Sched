@@ -10,3 +10,9 @@ project(procgen C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(procgen procgen.c)
+
+
+project(proctest C)
+set(CMAKE_C_STANDARD 11)
+SET(CMAKE_C_FLAGS "-D TEST")
+add_executable(proctest proc.c proc.h)

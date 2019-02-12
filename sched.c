@@ -12,17 +12,18 @@
 #include "sched.h"
 //Functions
 void clearScreen();
+void printRun();
 int doesIOBlock();
-int run(proc * prc);
+int run(int num);
 void loadNew();
-void enqueue(proc * proc1);
-proc * dequeue(int priority);
+void enqueue(int num, int prior);
+int dequeue(int priority);
 int sched();
 
 //Globals
 FILE * fp;
 int clk;
-proc * queue[4][10001];
+int queue[4][10001];
 int head[4];//Head and tail for each queue
 int tail[4];
 int size[4];// One for each priority
@@ -46,12 +47,12 @@ void clearScreen()
     const char *CLEAR_SCREEN_ANSI = "\e[1;1H\e[2J";
     fprintf(stdout, CLEAR_SCREEN_ANSI, 12);
 }
-void printRun(proc * proc1) {
-    printf("Now Running file num : %d\n", getNumber(proc1));
-    printf("Location: %i\n",getWhereAt(proc1));
-    printf("Priority: %i\n",getPriority(proc1));
-    printf("ExecTime: %i\n",getTime(proc1));
-    printf("Memory: %i\n", getMemory(proc1));
+void printRun() {
+    printf("Now Running file num : %d\n", getNumber());
+    printf("Location: %i\n",getWhereAt());
+    printf("Priority: %i\n",getPriority());
+    printf("ExecTime: %i\n",getTime());
+    printf("Memory: %i\n", getMemory());
 
 }
 
@@ -63,18 +64,19 @@ int doesIOBlock() {
 
 }
 
-int run(proc * prc) {
-    //printRun(prc);
-    int c = getNext(prc);
+int run(int num) {
+    openProc(num);
+    printRun();
+    int c = getNext();
     while(c != 0){
         if(doesIOBlock() == 1) {
             return -1;
         }
         clk += c;
-        c = getNext(prc);
-        //printf("Next Exec : %i\n", c);
+        c = getNext();
+        printf("Next Exec : %i\n", c);
     }
-    //closeProc(prc);
+    closeProc();
     return 0;
 }
 
@@ -83,14 +85,14 @@ int sched() {
      for(int i = 0; i < 4; i++) {
            //Gets current size, to avoid enqueue continually running same thing.
           for(int currentsize = size[i];  currentsize > 0 ; currentsize--) {
-                proc * next = dequeue(i);
-                int ret = run(next);
-                if(ret == -1)
-                    enqueue(next);
-                else
-                  closeProc(next);
-            }  
-        }   
+              int next = dequeue(i);
+              int ret = run(next);
+              if(ret == -1)
+                  enqueue(next, i);
+              else
+                  closeProc();
+          }
+     }
     return 0;
 }
 
@@ -101,28 +103,32 @@ void loadNew() {
     snprintf(buf, sizeof(buf), "%i.proc", counter);
     
     while(access(buf, F_OK) != -1) {
-        proc * newproc = openProc(counter);
-        enqueue(newproc);
+        openProc(counter);
+        int priority = getPriority();
+        closeProc();
+        enqueue(counter, priority);
         counter++;
         //Open with counter filename
         snprintf(buf, sizeof(buf), "%i.proc", counter);
     }
 }
 
-void enqueue(proc * proc1) {
-    int prior = proc1->priority;
-    queue[prior][head[prior]] = proc1;
+void enqueue(int num, int prior) {
+    queue[prior][head[prior]] = num;
     head[prior]--;
+    if(tail[prior] == 0)
+        tail[prior] = 10000;
     size[prior]++;
-
 }
 
-proc * dequeue(int priority) {
+int dequeue(int priority) {
     if(size[priority] == 0) {
-        return NULL;
+        return -1;
     }
-    proc * ret = queue[priority][tail[priority]];
+    int ret = queue[priority][tail[priority]];
     tail[priority]--;
+    if(tail[priority] == 0)
+        tail[priority] = 10000;
     size[priority]--;
     return ret;
 }

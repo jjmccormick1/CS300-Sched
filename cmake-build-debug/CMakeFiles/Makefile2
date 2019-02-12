@@ -65,13 +65,50 @@ CMAKE_SOURCE_DIR = /home/jj/CLionProjects/sched
 CMAKE_BINARY_DIR = /home/jj/CLionProjects/sched/cmake-build-debug
 
 #=============================================================================
+# Target rules for target CMakeFiles/proctest.dir
+
+# All Build rule for target.
+CMakeFiles/proctest.dir/all:
+	$(MAKE) -f CMakeFiles/proctest.dir/build.make CMakeFiles/proctest.dir/depend
+	$(MAKE) -f CMakeFiles/proctest.dir/build.make CMakeFiles/proctest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target proctest"
+.PHONY : CMakeFiles/proctest.dir/all
+
+# Include target in all.
+all: CMakeFiles/proctest.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/proctest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/proctest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/proctest.dir/rule
+
+# Convenience name for target.
+proctest: CMakeFiles/proctest.dir/rule
+
+.PHONY : proctest
+
+# clean rule for target.
+CMakeFiles/proctest.dir/clean:
+	$(MAKE) -f CMakeFiles/proctest.dir/build.make CMakeFiles/proctest.dir/clean
+.PHONY : CMakeFiles/proctest.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/proctest.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/sched.dir
 
 # All Build rule for target.
 CMakeFiles/sched.dir/all:
 	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/depend
 	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles --progress-num=3,4,5 "Built target sched"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jj/CLionProjects/sched/cmake-build-debug/CMakeFiles --progress-num=5,6,7 "Built target sched"
 .PHONY : CMakeFiles/sched.dir/all
 
 # Include target in all.
