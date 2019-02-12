@@ -115,6 +115,8 @@ void enqueue(proc * proc1) {
     int prior = proc1->priority;
     queue[prior][head[prior]] = proc1;
     head[prior]--;
+    if(head[prior] < 0)
+        head[prior] = 10000;
     size[prior]++;
 
 }
@@ -125,6 +127,8 @@ proc * dequeue(int priority) {
     }
     proc * ret = queue[priority][tail[priority]];
     tail[priority]--;
+    if(tail[priority] < 0)
+        tail[priority] = 10000;
     size[priority]--;
     return ret;
 }
