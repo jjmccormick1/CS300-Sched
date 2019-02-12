@@ -11,13 +11,18 @@
 FILE * fp;
 int openCount = 0;
 int number;
-void openProc(int num) {
+int openProc(int num) {
     char buf[100];
     openCount = 0;
     //Open with counter filename
     snprintf(buf, sizeof(buf), "%i.proc", num);
     fp = fopen(buf, "r+");
+    if(fp == NULL){
+        printf("File not found");
+        return 1;
+    }
     number = num;
+    return 0;
 }
 
 void closeProc() {
@@ -57,12 +62,14 @@ int getMemory() {
     return ret;
 }
 int getNext() {
+    if(fp == NULL)
+        return -1;
     int pos = getWhereAt() + openCount;
     fseek(fp, (10 * 4) + pos * 3, SEEK_SET); //Goto end of proc info
     int next;
-    fscanf(fp, "%d", &next);
-    if(next == EOF)
-        return -1;
+    int eof = fscanf(fp, "%d", &next);
+    if(eof == EOF)
+        return 0;
     openCount++;
     return next;
 }

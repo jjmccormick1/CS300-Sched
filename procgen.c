@@ -20,7 +20,7 @@ int new_process() {
     fprintf(fp, "%09d\n", (rand() % 191) + 10); //Memory 10mb to 200mb
     long num = (rand() % 99001) + 1000;
     //fprintf(fp, "0"); //Where at in run
-    for(long i = 0; i < num; i++) {
+    for(long i = 0; i < 400; i++) {
         fprintf(fp,"%02d\n",(rand() % 20) + 1);
     }
     fclose(fp);
@@ -30,7 +30,7 @@ int new_process() {
 
 int main() {
     int i =0 ;
-    while(10 > i) {
+    while(100 > i) {
         //long ran = (rand() % 9981) + 20;
         new_process();
         //usleep(ran * 1000); // Wait for 20 to 10000 seconds

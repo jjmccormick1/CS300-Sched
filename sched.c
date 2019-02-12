@@ -22,7 +22,7 @@ int sched();
 
 //Globals
 FILE * fp;
-int clk;
+long clk;
 int queue[4][10001];
 int head[4];//Head and tail for each queue
 int tail[4];
@@ -57,24 +57,27 @@ void printRun() {
 }
 
 int doesIOBlock() {
-    int r = (rand() % 100);
+    int ran =  rand();
+    int r = (ran % 100);
     if(r < 2)
         return 1;
     return 0;
-
 }
 
 int run(int num) {
-    openProc(num);
+    int chk = openProc(num);
+    if(chk == 1)
+        return 1;
     printRun();
     int c = getNext();
-    while(c != 0){
+    while(c != 0 && c != -1){
         if(doesIOBlock() == 1) {
+            closeProc();
             return -1;
         }
         clk += c;
         c = getNext();
-        printf("Next Exec : %i\n", c);
+        printf("Next Exec : %d\n", c);
     }
     closeProc();
     return 0;
@@ -89,8 +92,6 @@ int sched() {
               int ret = run(next);
               if(ret == -1)
                   enqueue(next, i);
-              else
-                  closeProc();
           }
      }
     return 0;

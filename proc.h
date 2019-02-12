@@ -17,7 +17,7 @@ typedef struct proc {
     FILE * fp;
 }proc;
 
-void openProc(int num);
+int openProc(int num);
 int getNumber();
 void closeProc();
 int getPriority();
