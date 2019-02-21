@@ -16,3 +16,19 @@ proc.h
 stdio.h
 -
 
+/home/jj/CLionProjects/sched/sched.c
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+unistd.h
+-
+proc.h
+/home/jj/CLionProjects/sched/proc.h
+sched.h
+/home/jj/CLionProjects/sched/sched.h
+
+/home/jj/CLionProjects/sched/sched.h
+

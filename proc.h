@@ -14,6 +14,7 @@ typedef struct proc {
     int execTime;
     int memory;
     int openCount;
+    long runStart;
     FILE * fp;
 }proc;
 

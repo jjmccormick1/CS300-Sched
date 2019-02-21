@@ -21,13 +21,14 @@ int sched();
 
 //Globals
 FILE * fp;
-int clk;
+long clk =0;
 proc * queue[4][10001];
 int head[4];//Head and tail for each queue
 int tail[4];
 int size[4];// One for each priority
 int counter = 0;;
-
+int runtimeAvgCounter = 0;
+int timeoutCounter = 0;
 
 int main(int argc, char **argv) {
     for(int i = 0; i < 4; i++) {
@@ -39,6 +40,8 @@ int main(int argc, char **argv) {
     while(size[0] > 0 || size[1] > 0 || size[2] > 0 || size[3] > 0) {
         sched();
     }
+    printf("Avg Run Time: %d\n", runtimeAvgCounter/counter);
+    printf("Number of Timeouts: %d\n",timeoutCounter);
 }
 
 void clearScreen()
@@ -64,15 +67,42 @@ int doesIOBlock() {
 }
 
 int run(proc * prc) {
-    printRun(prc);
+    if(prc->runStart == -1) { //If runstart hasnt been set yet, set it
+        prc->runStart = clk;
+    }
+    //printRun(prc);
+    int usclk = 0;
+    int timer =0;
     int c = getNext(prc);
     while(c != 0){
-        if(doesIOBlock() == 1) {
+        if(c == -1){ //If EOF so process done
+            runtimeAvgCounter += (clk - prc->runStart);
+            return 0;
+        }
+
+        usclk += c;
+
+        if(doesIOBlock() == 1) {// I/O Blocks, queue back up
             return -1;
         }
-        clk += c;
+        if(usclk >= 1000) {
+            clk++;
+            timer++;
+            usclk=0;
+        }
+        if(timer >= 10) {
+            printf("times up!");
+            fflush(stdout);
+            timeoutCounter++;
+            return -1;
+        }
+        if(prc->execTime <= 0) { //Out of exec time
+            runtimeAvgCounter += (clk - prc->runStart);
+            return 0;
+        }
+        prc->execTime--;//Dec remaining time
         c = getNext(prc);
-        printf("Next Exec : %i\n", c);
+        //printf("Next Exec : %i\n", c);
     }
     closeProc(prc);
     return 0;
@@ -89,8 +119,6 @@ int sched() {
                 int ret = run(next);
                 if(ret == -1)
                     enqueue(next);
-                //else
-                  // closeProc(next);
             }  
         }   
     return 0;
@@ -118,7 +146,6 @@ void enqueue(proc * proc1) {
     if(head[prior] < 0)
         head[prior] = 10000;
     size[prior]++;
-
 }
 
 proc * dequeue(int priority) {

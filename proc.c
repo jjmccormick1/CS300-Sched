@@ -10,6 +10,7 @@
 
 proc * openProc(int num) {
     proc * proc1 = malloc(sizeof(proc));
+    proc1->runStart = -1;
     proc1->openCount = 0;
     char buf[100];
     //Open with counter filename
