@@ -22,10 +22,10 @@ int sched();
 //Globals
 FILE * fp;
 long clk =0;
-proc * queue[4][10001];
-int head[4];//Head and tail for each queue
-int tail[4];
-int size[4];// One for each priority
+proc * queue[5][10001];
+int head[5];//Head and tail for each queue
+int tail[5];
+int size[5];// One for each priority
 int counter = 0;;
 int runtimeAvgCounter = 0;
 int timeoutCounter = 0;
@@ -147,8 +147,26 @@ void enqueue(proc * proc1) {
         head[prior] = 10000;
     size[prior]++;
 }
-
+void enqueueBlocked(proc * proc1) {
+    queue[5][head[5]] = proc1;
+    head[5]--;
+    if(head[5] < 0)
+        head[5] = 10000;
+    size[5]++;
+}
 proc * dequeue(int priority) {
+    if(size[priority] == 0) {
+        return NULL;
+    }
+    proc * ret = queue[priority][tail[priority]];
+    tail[priority]--;
+    if(tail[priority] < 0)
+        tail[priority] = 10000;
+    size[priority]--;
+    return ret;
+}
+proc * dequeueBlocked() {
+    int priority = 5;
     if(size[priority] == 0) {
         return NULL;
     }
