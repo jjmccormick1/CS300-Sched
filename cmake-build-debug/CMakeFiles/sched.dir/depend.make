@@ -4,7 +4,11 @@
 CMakeFiles/sched.dir/proc.c.o: ../proc.c
 CMakeFiles/sched.dir/proc.c.o: ../proc.h
 
+CMakeFiles/sched.dir/procgen.c.o: ../procgen.c
+CMakeFiles/sched.dir/procgen.c.o: ../procgen.h
+
 CMakeFiles/sched.dir/sched.c.o: ../proc.h
+CMakeFiles/sched.dir/sched.c.o: ../procgen.h
 CMakeFiles/sched.dir/sched.c.o: ../sched.c
 CMakeFiles/sched.dir/sched.c.o: ../sched.h
 

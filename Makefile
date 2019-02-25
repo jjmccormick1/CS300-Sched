@@ -5,12 +5,13 @@ CFLAGS=-ggdb -Wall
 .PHONY: gen all test
 
 procgen:
-	@$(CC) $(CFLAGS) procgen.c -o procgen
+	@$(CC) $(CFLAGS) -D PROCGEN procgen.c -o procgen
 
 
 sched: proc
+	@$(CC) $(CFLAGS) -c procgen.c
 	@$(CC) $(CFLAGS) -c sched.c
-	@$(CC) $(CFLAGS) proc.o sched.o -o sched
+	@$(CC) $(CFLAGS) procgen.o proc.o sched.o -o sched -lm
 
 proc:
 	@$(CC) $(CFLAGS) -c proc.c
@@ -21,10 +22,7 @@ proctest:
 
 all: procgen sched
 
-gen: procgen
-	@./procgen
-
-runsched: sched gen
+run: sched
 	@./sched
 
 clean:

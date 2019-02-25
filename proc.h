@@ -16,6 +16,11 @@ typedef struct proc {
     int openCount;
     long runStart;
     long runEnd;
+    int blockTime;
+    long blockStart;
+    int inMemory;
+    long lastRunCount;
+    long lastRunTime;
     FILE * fp;
 }proc;
 

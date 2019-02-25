@@ -12,6 +12,10 @@ proc * openProc(int num) {
     proc * proc1 = malloc(sizeof(proc));
     proc1->runStart = -1;
     proc1->openCount = 0;
+    proc1->blockTime = -1;
+    proc1->inMemory = 0;
+    proc1->lastRunTime = -1;
+    proc1->lastRunCount = 0;
     char buf[100];
     //Open with counter filename
     snprintf(buf, sizeof(buf), "%i.proc", num);

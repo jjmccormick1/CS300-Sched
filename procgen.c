@@ -5,13 +5,13 @@
 #include <string.h>
 #include <assert.h>
 #include <sys/stat.h>
-
-int counter = 0;
+#include "procgen.h"
+int newProcCounter = 0;
 
 int new_process() {
     char buf[100];
     //Open with counter filename
-    snprintf(buf, sizeof(buf), "%i.proc", counter);
+    snprintf(buf, sizeof(buf), "%i.proc", newProcCounter);
     FILE * fp = fopen(buf,"w");
     assert(fp != NULL);
     fprintf(fp, "0\n"); //Where at in run
@@ -24,13 +24,13 @@ int new_process() {
         fprintf(fp,"%02d\n",(rand() % 20) + 1);
     }
     fclose(fp);
-    counter++;
+    newProcCounter++;
     return (int)num;
 }
-
+#ifdef PROCGEN
 int main() {
     int i =0 ;
-    while(1000 > i) {
+    while(100 > i) {
         //long ran = (rand() % 9981) + 20;
         new_process();
         //usleep(ran * 1000); // Wait for 20 to 10000 seconds
@@ -38,4 +38,5 @@ int main() {
     }
 
 }
+#endif
 

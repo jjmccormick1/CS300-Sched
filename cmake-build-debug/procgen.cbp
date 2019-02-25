@@ -125,7 +125,11 @@
 			<Option target="sched"/>
 		</Unit>
 		<Unit filename="/home/jj/CLionProjects/sched/procgen.c">
+			<Option target="sched"/>
 			<Option target="procgen"/>
+		</Unit>
+		<Unit filename="/home/jj/CLionProjects/sched/procgen.h">
+			<Option target="sched"/>
 		</Unit>
 		<Unit filename="/home/jj/CLionProjects/sched/sched.c">
 			<Option target="sched"/>

@@ -169,6 +169,7 @@ procgen.o: procgen.c.o
 
 # target to build an object file
 procgen.c.o:
+	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/procgen.c.o
 	$(MAKE) -f CMakeFiles/procgen.dir/build.make CMakeFiles/procgen.dir/procgen.c.o
 .PHONY : procgen.c.o
 
@@ -178,6 +179,7 @@ procgen.i: procgen.c.i
 
 # target to preprocess a source file
 procgen.c.i:
+	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/procgen.c.i
 	$(MAKE) -f CMakeFiles/procgen.dir/build.make CMakeFiles/procgen.dir/procgen.c.i
 .PHONY : procgen.c.i
 
@@ -187,6 +189,7 @@ procgen.s: procgen.c.s
 
 # target to generate assembly for a file
 procgen.c.s:
+	$(MAKE) -f CMakeFiles/sched.dir/build.make CMakeFiles/sched.dir/procgen.c.s
 	$(MAKE) -f CMakeFiles/procgen.dir/build.make CMakeFiles/procgen.dir/procgen.c.s
 .PHONY : procgen.c.s
 
