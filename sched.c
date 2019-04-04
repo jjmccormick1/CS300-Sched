@@ -48,6 +48,7 @@ int runCount =0;
 long lastRunCount = 0;
 
 int main(int argc, char **argv) {
+    //srand(time(NULL));
     for(int i = 0; i < 4; i++) { //Pre-fill queue array values
         head[i] = 10000;
         tail[i] = 10000;
